@@ -1,0 +1,93 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.35">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.3.9"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.3.9">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers>
+        <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.29.4">
+          <spec></spec>
+        </com.cloudbees.jenkins.GitHubPushTrigger>
+      </triggers>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.4">
+      <projectUrl>https://github.com/syedmohdqasim/openApi3/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.74">
+    <script>pipeline {
+	agent any
+	
+tools {
+        
+        nodejs &apos;Node&apos;
+    }
+	stages {
+		
+		stage(&apos;Validate OpenAPI Spec&apos;) {
+			steps {
+				//sh &quot;export PATH=$PATH:/usr/local/bin/&quot;
+				//sh &quot;/usr/local/bin/npm install -g swagger-cli&quot;
+				sh &quot;pwd&quot;
+				sh &quot;mkdir -p ../api&quot;
+				sh &quot;cp ../f1/* ../api/&quot;
+				sh &quot;swagger-cli validate ../api/sampleV3.0&quot;
+				//sh &quot;echo hello&quot; 
+			
+			}
+		}
+		stage(&apos;Generate Apigee Proxy Bundle&apos;) {
+			steps {
+				script {
+					try {
+						//sh &quot;/usr/local/bin/npm install -g openapi2apigee&quot;
+						sh &quot;openapi2apigee generateApi fundsCache --virtualhosts newVHost -s ../api/sampleV2.json -d .&quot;
+						//sh &quot;openapi2apigee generateApi fundsCache --virtualhosts newVHost -s OpenAPI_3.json -d .&quot;
+					} catch (e) {
+						throw e
+					}
+				}
+			}
+		}
+		
+		stage(&apos;Linting Apigee Proxy Bundles&apos;) {
+			steps {
+				//sh &quot;/usr/local/bin/npm install -g apigeelint&quot;
+				sh &quot;apigeelint -s fundsCache/apiproxy/ -f table.js&quot;
+				sh &quot;pwd&quot;
+			}
+		}
+		stage(&apos;Deploying Apigee Proxy&apos;) {
+			steps {
+				sh &quot;curl -k -v -u &apos;smdqsm@gmail.com:!Abcd1234&apos; &apos;https://api.enterprise.apigee.com/v1/o/smdqsm-eval/apis?action=import&amp;name=cicd1&apos; -T fundsCache/apiproxy.zip -H &apos;Content-Type: application/octet-stream&apos; -X POST&quot;
+				sh &quot;pwd&quot;
+				println(&quot;Upload to Apigee successful.&quot;)
+				println(&quot;Service: FundsCache&quot;)
+				println(&quot;Org: StateStreet&quot;)
+				//sh &quot;/usr/local/bin/npm install -g apigeelint&quot;
+				sh &quot;curl -X POST -H &apos;Content-type:application/x-www-form-urlencoded&apos; https://api.enterprise.apigee.com/v1/o/smdqsm-eval/environments/test/apis/cicd1/revisions/1/deployments?override=true -u &apos;smdqsm@gmail.com:!Abcd1234&apos;&quot;
+				sh &quot;pwd&quot;
+				println(&quot;Upload to Apigee successful.&quot;);
+				println(&quot;echo Service: FundsCache&quot;);
+				println(&quot; Org: StateStreet&quot;);
+				
+			}
+		}	
+		
+	}
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
