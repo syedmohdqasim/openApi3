@@ -6,7 +6,6 @@
   },
   "paths": {
     "/": {
-      
       "get": {
         "summary": "View personalized greeting",
         "operationId": "View a personalized greeting",
