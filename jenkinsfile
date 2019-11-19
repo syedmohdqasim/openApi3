@@ -15,9 +15,7 @@ tools {
 else 
 	git -C openApi3 pull https://github.com/syedmohdqasim/openApi3.git 
 fi '''
-						
-				sh ' sharedFlow="sharedflowbundle2" '
-				sh ' zip -r ${sharedFlow}.zip openApi3/${sharedFlow} '			
+				sh ' zip -r sharedflowbundle2.zip openApi3/sharedflowbundle2 '			
 			
 			}
 		}
