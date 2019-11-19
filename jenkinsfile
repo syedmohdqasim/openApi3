@@ -7,7 +7,7 @@ tools {
     }
 	stages {
 		
-		stage('Validate OpenAPI Spec') {
+		stage('Build  Zip file for shared flow') {
 			steps {
 				
 				sh ''' if [ ! -d \'openApi3\' ] ; then
