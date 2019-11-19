@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="GetProxyParameters" version="SHA-512:954b815b136365281ccc0c9c2f0ded2c3bd036bd8e96f53de54ced1bddfde286f11b7a7d2c91795fd0e5a2da9a6a65a4f0e8b91f49821de68b1f019b6b11207a"/>
+        <VersionInfo resourceName="OAuth-v20-1" version="SHA-512:f8f102e30194721962ba0e31ee773c7852e5b2e472ec3eebf29972142a1e25dcbc2042dc66c3fab1c1e57dc3df2d6de6e5b0a7f7935b7a4dbe6337127c2006be"/>
+        <VersionInfo resourceName="PASS_REQUIRED_PARAMETERS" version="SHA-512:b00788cde857e67e8d07aec47551b1135f552e5724093434bb3ddb09c2942a15c01188b252a8ff1d95bc6a6f39f0cddd3100f06837f1595d74bc9ff0839fd455"/>
+        <VersionInfo resourceName="remove-header-authorization" version="SHA-512:e791f4b6f7790ea73eba19160c8a928a079fb3051f3638d48a8a7575dfceb3f8a32007b2c7e1b8b3df2dee4f403e922b045eac36a964b2d02f932c5f869d4999"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://getProxyVaribales.js" version="SHA-512:74f95144c3727475a3c842c5d00f5385b1d0628d06a9c7f6e8a22b9e465db6459c26956dfb9cce22fffd2c9935002ec4ad5485eb3d5c548dbe7a56b16acb9e34"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:270821c31b12a3ccd8d32f99b2301cbcf3a8843f9a9602a4b577376ab4cab85cb2db7dff2e126edc41eab4128539e70e464d3565d7560a3f8a37d0ea4a59c3d4"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

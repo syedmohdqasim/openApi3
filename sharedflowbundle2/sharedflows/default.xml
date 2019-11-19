@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>OAuth-v20-1</Name>
+    </Step>
+    <Step>
+        <Name>remove-header-authorization</Name>
+    </Step>
+    <Step>
+        <Name>GetProxyParameters</Name>
+    </Step>
+    <Step>
+        <Name>PASS_REQUIRED_PARAMETERS</Name>
+    </Step>
+</SharedFlow>
