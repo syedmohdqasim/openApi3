@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="10" name="SSC-OAuth-Flow">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1571939209081</CreatedAt>
+    <CreatedBy>sqasim@statestreet.com</CreatedBy>
+    <Description>checks for Oauth access Token</Description>
+    <DisplayName>SSC-OAuth-Flow</DisplayName>
+    <LastModifiedAt>1573219535000</LastModifiedAt>
+    <LastModifiedBy>sqasim@statestreet.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:930bd08badcd891d06de5b701713168d255b4ecfd1e1d5254af8cd1e0d0ccd0ea40fdc80353f33039c45632b60b07472515f8345d4d98bcc8c66bf03599d71d9</ManifestVersion>
+    <Policies>
+        <Policy>GetProxyParameters</Policy>
+        <Policy>OAuth-v20-1</Policy>
+        <Policy>PASS_REQUIRED_PARAMETERS</Policy>
+        <Policy>remove-header-authorization</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://getProxyVaribales.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

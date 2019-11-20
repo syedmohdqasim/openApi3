@@ -10,12 +10,7 @@ tools {
 		stage('Build  Zip file for shared flow') {
 			steps {
 				
-				sh ''' if [ ! -d \'openApi3\' ] ; then
- 	git clone https://github.com/syedmohdqasim/openApi3.git  
-else 
-	git -C openApi3 pull https://github.com/syedmohdqasim/openApi3.git 
-fi '''
-				sh ' zip -r sharedflowbundle2.zip openApi3/sharedflowbundle2 '			
+				sh ' zip -r OAuth.zip OAuth/ '			
 			
 			}
 		}
